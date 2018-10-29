@@ -18,11 +18,11 @@ public class SendmsPage extends AbstractPage {
     @FindBy(xpath = "//div[contains(text(),'kseniya.samtsova@gmail.com')]")
     WebElement sent_mail;
 
-    public void ClickSendMailLink(){
+    public void clickSendMailLink(){
         send_mail_link.click();
     }
 
-    public String GetSentMail(){
+    public String getSentMail(){
        return sent_mail.getText();
     }
 

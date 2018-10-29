@@ -1,5 +1,6 @@
 package com.training.pages;
 
+import com.training.bo.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,12 +28,11 @@ public class LoginPage extends AbstractPage {
     WebElement user_link;
 
 
-
-    public void loginMailRu(String login, String pass) {
+    public void loginMailRu(User user) {
         highlightElement(username);
-        username.sendKeys(login);
+        username.sendKeys(user.getLogin());
         highlightElement(password);
-        password.sendKeys(pass);
+        password.sendKeys(user.getPassword());
         submit_button.click();
     }
 

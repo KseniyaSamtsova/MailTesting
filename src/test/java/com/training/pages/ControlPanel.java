@@ -16,11 +16,8 @@ public class ControlPanel extends AbstractPage {
     @FindBy(xpath = "//a[@id='PH_logoutLink']")
     WebElement leave_account_link;
 
-//    @FindBy(xpath = "//div[@class='toolbar__aside']")
-//    WebElement toolbar;
 
-
-    public void CklickLeaveAccountLink(){
+    public void clickLeaveAccountLink(){
         leave_account_link.click();
     }
 }

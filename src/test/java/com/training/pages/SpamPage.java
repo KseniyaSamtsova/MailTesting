@@ -21,7 +21,7 @@ public class SpamPage extends AbstractPage {
         spam_link.click();
     }
 
-    public void DragAndDropDraftToSpam(){
+    public void dragAndDropDraftToSpam(){
         try {
             Thread.sleep( 10000 );
         } catch (InterruptedException e) {

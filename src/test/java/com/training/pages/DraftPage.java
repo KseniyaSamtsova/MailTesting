@@ -28,32 +28,31 @@ public class DraftPage extends AbstractPage {
     @FindBy (css = "#tinymce")
     WebElement text_area;
 
-    public void OpenMessage(){
+    public void openMessage(){
         item_panel_draft.click();
     }
 
 
-    public String GetSubject(){
+    public String getSubject(){
        return subject_field.getAttribute("value");
     }
 
-    public String GetBody() {
+    public String getBody() {
         driver.switchTo().frame(0);
         return text_area.getText();
     }
 
-    public void CloseFrame(){
+    public void closeFrame(){
         driver.switchTo().defaultContent();
     }
 
-    public void SendDraftLetter(){
+    public void sendDraftLetter(){
 
         try {
             Thread.sleep( 10000 );
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
         send_button.click();
 
@@ -73,7 +72,7 @@ public class DraftPage extends AbstractPage {
         }
         return thrown;
     }
-    public void KeyboardSaveMail(){
+    public void keyboardSaveMail(){
         try {
             Thread.sleep( 10000 );
         } catch (InterruptedException e) {

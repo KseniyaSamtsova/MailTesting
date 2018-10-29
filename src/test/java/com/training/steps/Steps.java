@@ -1,6 +1,7 @@
 package com.training.steps;
 
 import com.training.DriverSingelton;
+import com.training.bo.User;
 import com.training.pages.*;
 import org.openqa.selenium.WebDriver;
 
@@ -12,9 +13,9 @@ public class Steps {
         driver= DriverSingelton.startBrowser();
     }
 
-    public void startPage(String username, String password){
+    public void startPage(User user){
         LoginPage homePage = new LoginPage(driver);
-        homePage.loginMailRu(username,password);
+        homePage.loginMailRu(user);
     }
 
     public boolean isLoggedIn(String username){
@@ -22,72 +23,70 @@ public class Steps {
         return loginPage.homePageStatus(username);
     }
 
-
-
     public void createNewMail(String addresse,String subject, String text) {
         ComposePage composePage = new ComposePage(driver);
-        composePage.ClickWriteLetterButton();
-        composePage.SaveLetter(addresse,subject,text);
-        composePage.ClickDraftLink();
+        composePage.clickWriteLetterButton();
+        composePage.saveLetter(addresse,subject,text);
+        composePage.clickDraftLink();
     }
 
     public String isPresentInDraft(){
         ComposePage composePage = new ComposePage(driver);
-        return composePage.CheckAddresse();
+        return composePage.checkAddresse();
     }
     public void openMessage(){
         DraftPage draftPage = new DraftPage(driver);
-        draftPage.OpenMessage();
+        draftPage.openMessage();
     }
-    public String CheckSubject(){
+    public String checkSubject(){
         DraftPage draftPage = new DraftPage(driver);
-        return draftPage.GetSubject();
+        return draftPage.getSubject();
     }
-    public String CheckBody() {
+    public String checkBody() {
         DraftPage draftPage = new DraftPage(driver);
-        return draftPage.GetBody();
+        return draftPage.getBody();
     }
 
-    public void ClickSendMessage(){
+    public void clickSendMessage(){
         DraftPage draftPage = new DraftPage(driver);
-        draftPage.CloseFrame();
-        draftPage.SendDraftLetter();
+        draftPage.closeFrame();
+        draftPage.sendDraftLetter();
 
     }
-    public void ClickOpenDraft(){
+    public void clickOpenDraft(){
         ComposePage composePage = new ComposePage(driver);
-        composePage.ClickDraftLink();
+        composePage.clickDraftLink();
     }
-    public boolean CheckVanish(){
+    public boolean checkVanish(){
         DraftPage draftPage = new DraftPage(driver);
         return draftPage.isVanished();
     }
-    public void ClickOpenSent(){
+    public void clickOpenSent(){
         SendmsPage sendmsPage = new SendmsPage(driver);
-        sendmsPage.ClickSendMailLink();
+        sendmsPage.clickSendMailLink();
     }
 
-    public String CheckSentMail(){
+    public String checkSentMail(){
         SendmsPage sendmsPage = new SendmsPage(driver);
-        return sendmsPage.GetSentMail();
+        return sendmsPage.getSentMail();
     }
 
-    public void ClickLeaveAccount(){
+    public void clickLeaveAccount(){
         ControlPanel controlPanel = new ControlPanel(driver);
-        controlPanel.CklickLeaveAccountLink();
+        controlPanel.clickLeaveAccountLink();
     }
-    public void DragDrop(){
+    public void dragDrop(){
         SpamPage spamPage = new SpamPage(driver);
-        spamPage.DragAndDropDraftToSpam();
+        spamPage.dragAndDropDraftToSpam();
     }
-    public void SaveMail(){
+    public void saveMail(){
         DraftPage draftPage = new DraftPage(driver);
-        draftPage.KeyboardSaveMail();
+        draftPage.keyboardSaveMail();
     }
 
-    public void ComposeMailForSave(String addresse,String subject, String text){
+    public void composeMailForSave(String addresse, String subject, String text){
         ComposePage composePage = new ComposePage(driver);
-        composePage.ClickWriteLetterButton();
-        composePage.ComposeMail(addresse,subject,text);
+        composePage.clickWriteLetterButton();
+        composePage.composeMail(addresse,subject,text);
     }
 }

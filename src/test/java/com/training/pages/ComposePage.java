@@ -15,17 +15,16 @@ public class ComposePage extends AbstractPage {
         PageFactory.initElements(this.driver,this);
     }
 
-    @FindBy (xpath = "//div[contains(@class,'compose-head__row-wrapper compose-head__row-wrapper_to js-row')]//textarea[@class='js-input compose__labels__input']")
+    @FindBy(xpath = "//textarea[@data-original-name = 'To']")
     WebElement whum;
 
     @FindBy(xpath = "//input[contains(@name,'Subject')]")
     WebElement topic;
 
-    //@FindBy (css = "#tinymce")
     @FindBy(xpath = "//body[@id='tinymce']")
     WebElement text_area;
 
-    @FindBy (xpath = "//div[@id='b-toolbar__right']//div//div[contains(@class,'b-toolbar')]//div[contains(@class,'b-toolbar__group')]//div[contains(@class,'b-toolbar__item')]//div//div[contains(@title,'Сохранить (Ctrl+S)')]//span[contains(@class,'b-toolbar__btn__text')][contains(text(),'Сохранить')]")
+    @FindBy(xpath = "//span[contains(text(),'Сохранить')]")
     WebElement button_save_letter;
 
     @FindBy(xpath = "//span[contains(text(),'Черновики')]")
@@ -37,11 +36,11 @@ public class ComposePage extends AbstractPage {
     @FindBy(xpath = "//div[contains(text(),'kseniya.samtsova@gmail.com')]")
     WebElement item_panel_draft;
 
-    public void ClickWriteLetterButton(){
+    public void clickWriteLetterButton(){
         button_write_letter.click();
     }
 
-    public void SaveLetter(String forWhum, String whatTopic, String textArea){
+    public void saveLetter(String forWhum, String whatTopic, String textArea){
         whum.sendKeys(forWhum);
         topic.sendKeys(whatTopic);
         driver.switchTo().frame(0);
@@ -51,7 +50,7 @@ public class ComposePage extends AbstractPage {
         button_save_letter.click();
     }
 
-    public void ComposeMail(String forWhum, String whatTopic, String textArea){
+    public void composeMail(String forWhum, String whatTopic, String textArea){
         whum.sendKeys(forWhum);
         topic.sendKeys(whatTopic);
         driver.switchTo().frame(0);
@@ -60,7 +59,7 @@ public class ComposePage extends AbstractPage {
         driver.switchTo().defaultContent();
     }
 
-    public void ClickDraftLink(){
+    public void clickDraftLink(){
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -69,7 +68,7 @@ public class ComposePage extends AbstractPage {
         draft_link.click();
     }
 
-    public String CheckAddresse() {
-        return item_panel_draft.getText();
+    public String checkAddresse() {
+        return item_panel_draft.getAttribute("innerText");
     }
 }
